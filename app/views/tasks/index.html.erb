@@ -1,0 +1,20 @@
+<div class="container">
+<h1>My Task</h1>
+<% @tasks.each do |task|  %>
+<ul>
+  <li><% if task.completed %>
+     <input type="checkbox" checked disabled>
+     <% else %>
+     <input type="checkbox" disabled>
+  <% end %> 
+  <%= link_to task.title, task_path(task) %>
+
+<i class="icon-ok icon-white"></i>
+<%= link_to '<i class="fa fa-trash" aria-hidden="true"></i>'.html_safe, task_path(task), method: :delete, data:{confirm:"Are you sure?"}, class:"btn btn-sm btn-danger" %>
+ </li>
+</ul>
+<% end %>
+<div class="row">
+<%= link_to 'New Task', new_task_path, class: "btn btn-success" %>
+</div>
+</div>
